@@ -1,0 +1,108 @@
+{
+  "dataRoles": [
+   {
+      "displayName": "ID",
+      "kind": "GroupingOrMeasure",
+      "name": "ID"
+    }, 
+    {
+      "displayName": "X",
+      "kind": "GroupingOrMeasure",
+      "name": "X"
+    }, 
+	 {
+      "displayName": "Y",
+      "kind": "GroupingOrMeasure",
+      "name": "Y"
+    }, 
+	 {
+      "displayName": "Values",
+      "kind": "GroupingOrMeasure",
+      "name": "Values"
+    }
+  ],
+  "dataViewMappings": [
+    {
+	"conditions": [
+        {
+          "Values": {
+            "max": 10
+          },
+          "X": {
+            "max": 1
+          },
+          "Y": {
+            "max": 42
+          }, 
+		  "ID": {
+            "max": 1
+          }
+        }
+      ],
+      "scriptResult": {
+        "dataInput": {
+          "table": {
+            "rows": {
+              "select": [
+                {
+                  "for": {
+                    "in": "Values"
+                  }
+                }, 
+				{
+                  "for": {
+                    "in": "X"
+                  }
+                }, 
+				{
+                  "for": {
+                    "in": "Y"
+                  }
+                }, 
+				{
+                  "for": {
+                    "in": "ID"
+                  }
+                }
+              ],
+              "dataReductionAlgorithm": {
+                "top": {}
+              }
+            }
+          }
+        },
+        "script": {
+          "scriptProviderDefault": "R",
+          "scriptOutputType": "html",
+          "source": {
+            "objectName": "rcv_script",
+            "propertyName": "source"
+          },
+          "provider": {
+            "objectName": "rcv_script",
+            "propertyName": "provider"
+          }
+        }
+      }
+    }
+  ],
+  "objects": {
+    "rcv_script": {
+      "properties": {
+        "provider": {
+          "type": {
+            "text": true
+          }
+        },
+        "source": {
+          "type": {
+            "scripting": {
+              "source": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "suppressDefaultTitle": true
+}
